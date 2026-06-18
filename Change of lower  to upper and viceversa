@@ -1,0 +1,43 @@
+Reverse the Case of a String
+Write a Java program to convert all uppercase letters in a string to lowercase and all lowercase letters to uppercase.
+Sample Input
+JaVa ProGRam
+Sample Output
+jAvA pROgrAM
+
+
+Coding...:
+import java.util.*;
+
+public class Program {
+    public static void main(String args[]) {
+        Scanner a = new Scanner(System.in);
+        
+        while (a.hasNext()) {
+            // 1. Read the word first so we can find its length and check its characters
+            String word = a.next(); 
+            
+            // 2. Fixed 'strlen' to 'word.length()' to correctly loop through the string
+            for (int i = 0; i < word.length(); i++) {
+                // 3. Get the character at index 'i' instead of always index '0'
+                char s = word.charAt(i); 
+                
+                if (s == '.') {
+                    return; // Stops the program completely when a period is hit
+                }
+                
+                // 4. Fixed the 'else if' branch to convert uppercase to lowercase
+                if (Character.isLowerCase(s)) {
+                    s = Character.toUpperCase(s);
+                } else if (Character.isUpperCase(s)) {
+                    s = Character.toLowerCase(s);
+                }
+                
+                // 5. Changed 'println' to 'print' so characters stay grouped as a word
+                System.out.print(s); 
+            }
+            // 6. Print a space after finishing the word
+            System.out.print(" "); 
+        }
+    }
+}
