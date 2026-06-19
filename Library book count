@@ -1,0 +1,34 @@
+Library Book Counter Using Static Variable
+Develop a Java program to track the total number of books added to a library. Use a static variable to maintain the count and display the count whenever a new book is added.
+Sample Input
+Books Added: 3
+Sample Output
+Book Added
+Total Books: 1
+
+Book Added
+Total Books: 2
+
+Book Added
+Total Books: 3
+
+Coding...:
+
+import java.util.*;
+class library{
+    static int total=0;
+    library(int n){
+        for(int i=1;i<=n;i++){
+            total+=1;     //increment book count
+        System.out.println("Book Added");
+        System.out.println("Total Books:"+total);
+        }
+    }
+}
+public class Main{
+    public static void main(String agrs[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();  //getting input
+        library l=new library(n);//calling of constructor
+    }
+}
