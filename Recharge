@@ -1,0 +1,101 @@
+Develop a Java program to implement a mobile recharge system using constructor overloading:
+1.	Recharge with amount only. 
+2.	Recharge with amount and validity. 
+3.	Recharge with amount, validity, and data pack. 
+Display the recharge details.
+Sample Input
+199
+299 28
+399 56 2GB/day
+Sample Output
+Recharge Amount: 199
+
+Recharge Amount: 299
+Validity: 28 Days
+
+Recharge Amount: 399
+Validity: 56 Days
+Data Pack: 2GB/day
+
+
+Coding:...
+import java.util.Scanner;
+
+class Recharge {
+    private int amount;
+    private int validity;
+    private String dataPack;
+
+    // 1. Constructor: Amount only
+    public Recharge(int amount) {
+        this.amount = amount;
+        this.validity = 0;
+        this.dataPack = "None";
+    }
+
+    // 2. Constructor: Amount and Validity
+    public Recharge(int amount, int validity) {
+        this.amount = amount;
+        this.validity = validity;
+        this.dataPack = "None";
+    }
+
+    // 3. Constructor: Amount, Validity, and Data Pack
+    public Recharge(int amount, int validity, String dataPack) {
+        this.amount = amount;
+        this.validity = validity;
+        this.dataPack = dataPack;
+    }
+
+    public void displayDetails() {
+        System.out.println("Recharge Amount: " + amount);
+        if (validity > 0) {
+            System.out.println("Validity: " + validity + " Days");
+        }
+        if (!dataPack.equals("None")) {
+            System.out.println("Data Pack: " + dataPack);
+        }
+        System.out.println(); // Empty line matching sample output
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Loop 3 times to process the 3 separate input lines
+        for (int i = 0; i < 3; i++) {
+            // Read the full line typed by the user
+            String inputLine = scanner.nextLine().trim();
+            
+            // Split the line by spaces into an array of words/numbers
+            String[] tokens = inputLine.split("\\s+");
+            
+            Recharge myRecharge = null;
+
+            // Check how many items were entered on this line
+            if (tokens.length == 1) {
+                int amount = Integer.parseInt(tokens[0]);
+                myRecharge = new Recharge(amount);
+                
+            } else if (tokens.length == 2) {
+                int amount = Integer.parseInt(tokens[0]);
+                int validity = Integer.parseInt(tokens[1]);
+                myRecharge = new Recharge(amount, validity);
+                
+            } else if (tokens.length == 3) {
+                int amount = Integer.parseInt(tokens[0]);
+                int validity = Integer.parseInt(tokens[1]);
+                String dataPack = tokens[2];
+                myRecharge = new Recharge(amount, validity, dataPack);
+            }
+
+            // Print the output immediately for that input line
+            if (myRecharge != null) {
+                myRecharge.displayDetails();
+            }
+        }
+        
+        scanner.close();
+    }
+}
