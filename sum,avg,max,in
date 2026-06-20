@@ -1,0 +1,75 @@
+Array Statistics
+Write a Java program to find the sum, average, maximum, and minimum values in an array of integers.
+Sample Input
+5
+10 20 30 40 50
+Sample Output
+Sum = 150
+Average = 30.0
+Maximum = 50
+Minimum = 10
+
+Coding...:
+import java.util.*;
+class calculation{
+    int tot=0;
+    int sum(int[] arr){
+        for(int i=0;i<arr.length;i++){
+            tot+=arr[i];
+        }
+        return tot;
+    }
+    float avg(int[] arr){
+        int tot=0;
+        float average;
+        for(int i=0;i<arr.length;i++){
+            tot+=arr[i];
+        }
+        average=tot/arr.length;
+        return average;
+    }
+    int max(int[] arr){
+        int large;
+        large=arr[0];
+        for(int i=1;i<arr.length;i++){
+            if(large<arr[i]){
+                large=arr[i];
+            }
+        }
+        return large;
+    }
+    int min(int[] arr){
+        int small;
+        small=arr[0];
+        for(int i=1;i<arr.length;i++){
+            if(small>arr[i]){
+                small=arr[i];
+            }
+        }
+        return small;
+    }
+}
+
+public class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int[] arr;
+        int a=0;
+        float b=0;
+        int N=sc.nextInt();
+        arr=new int[N];
+        for(int i=0;i<N;i++){
+            arr[i]=sc.nextInt();
+        }
+        calculation c=new calculation();
+        a=c.sum(arr);
+        System.out.println("Sum = "+a);
+        b=c.avg(arr);
+        System.out.println("Average = "+b);
+        a=c.max(arr);
+        System.out.println("Max = "+a);
+        a=c.min(arr);
+        System.out.println("Min = "+a);
+        
+    }
+}
